@@ -14,8 +14,8 @@ const io = new Server(server);
 
 io.on("connection", (socket) => {
   console.log(`User Conncted With Socket :${socket.id}`);
-  socket.on("user-message", (messgae) => {
-    console.log(messgae);
+  socket.on("user-message", (message) => {
+    io.emit("re-message", message);
   });
 
   socket.on("disconnect", () => {
