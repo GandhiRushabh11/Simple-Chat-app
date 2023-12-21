@@ -7,9 +7,21 @@
   </head>
   <body>
     <p>Hello From Chating App</p>
+    <input type="text" id="message" placeholder="Enter Your Message" />
+    <button id="send">Send</button>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       const socket = io();
+
+      const msg = document.getElementById("message");
+      const btn = document.getElementById("send");
+
+      btn.addEventListener("click", (e) => {
+        if (msg.value) {
+          socket.emit("user-message", msg.value);
+        }
+      });
+      //socket.emit("user-message", "Hello From Client");
     </script>
   </body>
 </html>
